@@ -22,22 +22,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '22.x'
-          cache: 'npm'
-          cache-dependency-path: |
-            package-lock.json
-            server/package-lock.json
-            web/package-lock.json
 
-      - name: Install all dependencies (workspaces)
+      - name: Clean install dependencies
         run: |
-          # Installera dependencies från root med workspaces
+          # Ta bort eventuell gammal package-lock för att undvika plattformsproblem
+          rm -f package-lock.json
+          # Installera från scratch
           npm install
-          # Fixa Rollup optional dependencies bug genom att reinstallera i web-workspace
-          # Detta säkerställer att plattformsspecifika binärer installeras korrekt
-          cd web
-          rm -rf node_modules
-          npm install --include=optional --no-save
-          cd ..
 
       - name: Build web (frontend)
         run: npm run build -w web
@@ -58,7 +49,7 @@ jobs:
       - name: Install production dependencies for server
         run: |
           cd server
-          npm ci --omit=dev
+          npm install --omit=dev
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
