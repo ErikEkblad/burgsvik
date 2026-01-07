@@ -11,6 +11,7 @@ const client_1 = require("../fortnox/client");
 const whitelist_1 = require("../db/whitelist");
 const crypto_1 = __importDefault(require("crypto"));
 const session_1 = require("../auth/session");
+const env_1 = require("../env");
 const registerAuthRoutes = (app) => {
     app.get("/api/auth/fortnox/start", async (req, reply) => {
         const q = zod_1.z.object({ state: zod_1.z.string().optional() }).parse(req.query);
@@ -53,14 +54,12 @@ const registerAuthRoutes = (app) => {
                 const hasAccess = await (0, whitelist_1.canAccessCompany)(dbNum);
                 if (!hasAccess) {
                     req.log.warn({ dbNumber: dbNum, companyName: ci?.CompanyName }, "Company access denied - not in whitelist and not existing");
-                    const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-                    return reply.redirect(`${web}?error=company_not_allowed&message=${encodeURIComponent("Företaget har inte behörighet till denna applikation")}`);
+                    return reply.redirect(`${env_1.env.WEB_ORIGIN}?error=company_not_allowed&message=${encodeURIComponent("Företaget har inte behörighet till denna applikation")}`);
                 }
             }
             else {
                 req.log.error({ companyInfo: ci }, "DatabaseNumber missing from Fortnox response");
-                const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-                return reply.redirect(`${web}?error=missing_database_number&message=${encodeURIComponent("Kunde inte hämta företagsinformation från Fortnox")}`);
+                return reply.redirect(`${env_1.env.WEB_ORIGIN}?error=missing_database_number&message=${encodeURIComponent("Kunde inte hämta företagsinformation från Fortnox")}`);
             }
             // 3) Upsert user (prefer external_id; fallback by email to avoid duplicates)
             let userId;
@@ -172,8 +171,8 @@ const registerAuthRoutes = (app) => {
             const secret = process.env.SESSION_SECRET || "dev-secret-change-me";
             const session = (0, session_1.sign)({ type: "user", uid: userId, cid: companyId, iat: Math.floor(Date.now() / 1000) }, secret);
             reply.header('Set-Cookie', `sid=${session}; HttpOnly; Path=/; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}; Max-Age=${60 * 60 * 24 * 7}`);
-            const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-            return reply.redirect(web);
+            req.log.info({ redirectTo: env_1.env.WEB_ORIGIN }, "Redirecting after successful auth");
+            return reply.redirect(env_1.env.WEB_ORIGIN);
         }
         catch (err) {
             req.log.error({ err }, "Auth callback failed");

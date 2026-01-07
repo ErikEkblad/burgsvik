@@ -204,7 +204,14 @@ const start = async () => {
 
   try {
     await app.listen({ port: Number(env.PORT), host: "0.0.0.0" });
-    
+
+    // Logga miljövariabler vid start (för debugging)
+    (app as any).log.info({
+      NODE_ENV: env.NODE_ENV,
+      WEB_ORIGIN: env.WEB_ORIGIN,
+      PORT: env.PORT,
+    }, "Server started with config");
+
     // Starta WebSocket automatiskt för alla companies med auto_reverse_active = true
     const startWebSocketForActiveCompanies = async () => {
       try {

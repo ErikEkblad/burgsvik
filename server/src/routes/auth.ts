@@ -6,6 +6,7 @@ import { getMe, getCompanyInformation } from "../fortnox/client";
 import { canAccessCompany } from "../db/whitelist";
 import crypto from "crypto";
 import { sign } from "../auth/session";
+import { env } from "../env";
 
 export const registerAuthRoutes = (app: FastifyInstance) => {
   app.get("/api/auth/fortnox/start", async (req, reply) => {
@@ -48,13 +49,11 @@ export const registerAuthRoutes = (app: FastifyInstance) => {
         const hasAccess = await canAccessCompany(dbNum);
         if (!hasAccess) {
           req.log.warn({ dbNumber: dbNum, companyName: ci?.CompanyName }, "Company access denied - not in whitelist and not existing");
-          const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-          return reply.redirect(`${web}?error=company_not_allowed&message=${encodeURIComponent("Företaget har inte behörighet till denna applikation")}`);
+          return reply.redirect(`${env.WEB_ORIGIN}?error=company_not_allowed&message=${encodeURIComponent("Företaget har inte behörighet till denna applikation")}`);
         }
       } else {
         req.log.error({ companyInfo: ci }, "DatabaseNumber missing from Fortnox response");
-        const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-        return reply.redirect(`${web}?error=missing_database_number&message=${encodeURIComponent("Kunde inte hämta företagsinformation från Fortnox")}`);
+        return reply.redirect(`${env.WEB_ORIGIN}?error=missing_database_number&message=${encodeURIComponent("Kunde inte hämta företagsinformation från Fortnox")}`);
       }
 
       // 3) Upsert user (prefer external_id; fallback by email to avoid duplicates)
@@ -165,8 +164,8 @@ export const registerAuthRoutes = (app: FastifyInstance) => {
       const session = sign({ type: "user", uid: userId, cid: companyId, iat: Math.floor(Date.now()/1000) }, secret);
       reply.header('Set-Cookie', `sid=${session}; HttpOnly; Path=/; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}; Max-Age=${60*60*24*7}`);
 
-      const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";
-      return reply.redirect(web);
+      req.log.info({ redirectTo: env.WEB_ORIGIN }, "Redirecting after successful auth");
+      return reply.redirect(env.WEB_ORIGIN);
     } catch (err: any) {
       req.log.error({ err }, "Auth callback failed");
       return reply.code(500).send({ ok: false, error: "auth_callback_failed", message: String(err?.message ?? err) });
