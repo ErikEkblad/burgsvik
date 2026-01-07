@@ -29,7 +29,11 @@ jobs:
             web/package-lock.json
 
       - name: Install all dependencies (workspaces)
-        run: npm ci
+        run: |
+          # Använd npm install istället för npm ci för att säkerställa optional dependencies
+          npm install
+          # Säkerställ att Rollup's plattformsspecifika binärer installeras korrekt
+          cd web && npm install --include=optional && cd ..
 
       - name: Build web (frontend)
         run: npm run build -w web
