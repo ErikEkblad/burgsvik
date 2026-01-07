@@ -30,10 +30,14 @@ jobs:
 
       - name: Install all dependencies (workspaces)
         run: |
-          # Använd npm install istället för npm ci för att säkerställa optional dependencies
+          # Installera dependencies från root med workspaces
           npm install
-          # Säkerställ att Rollup's plattformsspecifika binärer installeras korrekt
-          cd web && npm install --include=optional && cd ..
+          # Fixa Rollup optional dependencies bug genom att reinstallera i web-workspace
+          # Detta säkerställer att plattformsspecifika binärer installeras korrekt
+          cd web
+          rm -rf node_modules
+          npm install --include=optional --no-save
+          cd ..
 
       - name: Build web (frontend)
         run: npm run build -w web
