@@ -10,6 +10,7 @@ import { supabaseAdmin } from "./db/supabase";
 import { registerFortnoxRoutes } from "./routes/fortnox";
 import { registerBackofficeRoutes } from "./routes/backoffice";
 import { startVoucherWs, setLogger } from "./ws/client";
+import fastifyStatic from "@fastify/static";
 
 const buildServer = async () => {
   const app = Fastify({ 
@@ -83,6 +84,25 @@ const buildServer = async () => {
 
   // Domänrutter (förutsätter session i endpoints själva)
   registerTxtRoutes(app);
+
+  // Servera frontend i produktion
+  if (process.env.NODE_ENV === "production") {
+    const webDistPath = path.join(__dirname, "../../web/dist");
+
+    await app.register(fastifyStatic, {
+      root: webDistPath,
+      prefix: "/",
+    });
+
+    // SPA fallback - servera index.html för alla icke-API routes
+    app.setNotFoundHandler(async (req, reply) => {
+      if (req.url.startsWith("/api/")) {
+        return reply.code(404).send({ ok: false, error: "not_found" });
+      }
+      return (reply as any).sendFile("index.html");
+    });
+  }
+
   return app;
 };
 
