@@ -51,7 +51,7 @@ const SidebarLayout: React.FC = () => {
 
   const handleLogout = async () => {
     await fetch(`${api}/api/auth/logout`, { method: 'POST', credentials: 'include' })
-    window.location.href = '/connect'
+    window.location.href = '/'
   }
 
   if (loading) {
