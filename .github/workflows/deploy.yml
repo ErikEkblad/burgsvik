@@ -42,9 +42,28 @@ jobs:
         run: |
           # Ta bort dev-dependencies och onödiga filer
           rm -rf web/node_modules
-          rm -rf server/node_modules/.cache
+          rm -rf web/src
+          rm -rf web/tsconfig.json
+          rm -rf server/node_modules
+          rm -rf server/src
+          rm -rf server/tsconfig.json
           rm -rf .git
           rm -rf .github
+          rm -rf node_modules
+
+      - name: Create minimal package.json for Azure
+        run: |
+          # Skapa en minimal package.json utan build-scripts så Oryx inte försöker bygga
+          cat > package.json << 'EOF'
+          {
+            "name": "burgsvik",
+            "private": true,
+            "engines": { "node": ">=18.0.0" },
+            "scripts": {
+              "start": "node server/dist/app.js"
+            }
+          }
+          EOF
 
       - name: Install production dependencies for server
         run: |
