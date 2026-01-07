@@ -12,11 +12,11 @@ const AutoReverse: React.FC = () => {
   const [triggerSeries, setTriggerSeries] = React.useState('')
   const [targetSeries, setTargetSeries] = React.useState('')
   const [dateMode, setDateMode] = React.useState<'FIRST_DAY_NEXT_MONTH' | 'DATE_IN_COMMENT'>('FIRST_DAY_NEXT_MONTH')
-  const [wsStatus, setWsStatus] = React.useState<{ connected: boolean; tenants: number; topicsAdded: boolean } | null>(null)
+  const [, setWsStatus] = React.useState<{ connected: boolean; tenants: number; topicsAdded: boolean } | null>(null)
   const [wsDebug, setWsDebug] = React.useState<any>(null)
-  const [wsChecking, setWsChecking] = React.useState(false)
+  const [, setWsChecking] = React.useState(false)
   const [saving, setSaving] = React.useState(false)
-  const [newEvent, setNewEvent] = React.useState(false)
+  const [, setNewEvent] = React.useState(false)
   const [lastTotalEvents, setLastTotalEvents] = React.useState<number>(0)
   const [events, setEvents] = React.useState<Array<{ t: number; topic?: string; type?: string; id?: string | number | null; year?: number | null; series?: string | null }>>(() => {
     try {

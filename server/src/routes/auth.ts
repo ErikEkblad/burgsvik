@@ -162,7 +162,7 @@ export const registerAuthRoutes = (app: FastifyInstance) => {
 
       // 6) Session cookie
       const secret = process.env.SESSION_SECRET || "dev-secret-change-me";
-      const session = sign({ uid: userId, cid: companyId, iat: Math.floor(Date.now()/1000) }, secret);
+      const session = sign({ type: "user", uid: userId, cid: companyId, iat: Math.floor(Date.now()/1000) }, secret);
       reply.header('Set-Cookie', `sid=${session}; HttpOnly; Path=/; SameSite=Lax${process.env.NODE_ENV === 'production' ? '; Secure' : ''}; Max-Age=${60*60*24*7}`);
 
       const web = process.env.WEB_ORIGIN ?? "http://localhost:5173";

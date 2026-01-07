@@ -1,5 +1,6 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
-import cookie from "@fastify/cookie";
+// eslint-disable-next-line @typescript-eslint/no-require-imports
+const fastifyCookie = require("@fastify/cookie");
 import crypto from "crypto";
 
 export type Session =
@@ -34,14 +35,14 @@ export const isUser = (session: Session | undefined): session is { type: "user";
 };
 
 export const registerSession = async (app: FastifyInstance, secret: string) => {
-  await app.register(cookie);
+  await app.register(fastifyCookie);
 
   app.addHook("preHandler", (req: FastifyRequest, reply: FastifyReply, done) => {
     // Bypass for auth routes, backoffice login/logout, and health
     const path = (req as any).routerPath || (req.raw.url as string);
     if (path?.startsWith("/api/auth/") || path?.startsWith("/api/backoffice/login") || path?.startsWith("/api/backoffice/logout") || path === "/api/health") return done();
 
-    const raw = (req.cookies as any)?.sid as string | undefined;
+    const raw = ((req as any).cookies as Record<string, string> | undefined)?.sid;
     if (!raw) return done();
     const s = verify(raw, secret);
     if (s) (req as any).session = s;
