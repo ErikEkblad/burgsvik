@@ -1,0 +1,1 @@
+# Burgsvik\n\nMonorepo med server/ (Fastify+TS) och web/ (React+Vite+TS). Se instructions/README.md fÃ¶r domÃ¤nflÃ¶den.
