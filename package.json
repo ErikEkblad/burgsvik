@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "concurrently -n server,web -c blue,magenta \"npm:dev -w server\" \"npm:dev -w web\"",
     "build": "npm run build -w web && npm run build -w server",
+    "build:web": "npm run build -w web",
+    "build:server": "npm run build -w server",
     "start": "node server/dist/app.js"
   },
   "devDependencies": {
