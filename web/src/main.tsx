@@ -157,7 +157,7 @@ const SidebarLayout: React.FC = () => {
 const TxtToVoucher: React.FC = () => {
   const api = (import.meta.env.VITE_API_BASE_URL || '')
   const [content, setContent] = React.useState('')
-  const [series, setSeries] = React.useState('A')
+  const [series, setSeries] = React.useState('I')
   const [date, setDate] = React.useState(new Date().toISOString().slice(0,10))
   const [desc, setDesc] = React.useState('')
   const [preview, setPreview] = React.useState<any>(null)

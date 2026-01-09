@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="ProgId" content="Word.Document">
+    <meta name="Generator" content="Microsoft Word 15">
+    <title>Användarmanual - Burgsvik</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 2.5cm;
+        }
+        body {
+            font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
+            max-width: 21cm;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 24pt;
+            color: #1a365d;
+            border-bottom: 3px solid #3182ce;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            font-size: 16pt;
+            color: #2c5282;
+            border-bottom: 1px solid #a0aec0;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            page-break-after: avoid;
+        }
+        h3 {
+            font-size: 13pt;
+            color: #2d3748;
+            margin-top: 20px;
+            page-break-after: avoid;
+        }
+        h4 {
+            font-size: 11pt;
+            color: #4a5568;
+            margin-top: 15px;
+        }
+        p {
+            margin: 10px 0;
+            text-align: justify;
+        }
+        .title-page {
+            text-align: center;
+            padding-top: 150px;
+            page-break-after: always;
+        }
+        .title-page h1 {
+            font-size: 36pt;
+            border: none;
+        }
+        .title-page .subtitle {
+            font-size: 14pt;
+            color: #666;
+            margin-top: 20px;
+        }
+        .title-page .version {
+            font-size: 12pt;
+            margin-top: 50px;
+        }
+        .toc {
+            page-break-after: always;
+        }
+        .toc h2 {
+            border-bottom: 2px solid #3182ce;
+        }
+        .toc ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin: 8px 0;
+            padding-left: 0;
+        }
+        .toc li a {
+            color: #2c5282;
+            text-decoration: none;
+        }
+        .toc li a:hover {
+            text-decoration: underline;
+        }
+        .toc .level-1 {
+            font-weight: bold;
+            font-size: 12pt;
+        }
+        .toc .level-2 {
+            padding-left: 20px;
+            font-size: 11pt;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #edf2f7;
+            font-weight: bold;
+            color: #2d3748;
+        }
+        tr:nth-child(even) {
+            background-color: #f7fafc;
+        }
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 10pt;
+        }
+        pre {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            overflow-x: auto;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 10pt;
+            line-height: 1.4;
+            margin: 15px 0;
+        }
+        .tip {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .tip::before {
+            content: "Tips: ";
+            font-weight: bold;
+            color: #2c5282;
+        }
+        .warning {
+            background-color: #fffbeb;
+            border-left: 4px solid #d69e2e;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .warning::before {
+            content: "Obs! ";
+            font-weight: bold;
+            color: #975a16;
+        }
+        .note {
+            background-color: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        ol, ul {
+            margin: 10px 0;
+            padding-left: 30px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .success {
+            color: #22543d;
+        }
+        .error {
+            color: #c53030;
+        }
+        strong {
+            color: #1a202c;
+        }
+        .footer {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 10pt;
+            color: #718096;
+            font-style: italic;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Titelsida -->
+<div class="title-page">
+    <h1>Burgsvik</h1>
+    <p class="subtitle">Användarmanual</p>
+    <p class="version">
+        <strong>Version 1.0</strong><br>
+        Januari 2026
+    </p>
+    <p style="margin-top: 100px;">
+        <img src="" alt="" style="width: 150px;">
+    </p>
+    <p style="margin-top: 50px; font-size: 11pt;">
+        Fyrtech AB<br>
+        burgsvik.fyrtech.se
+    </p>
+</div>
+
+<!-- Innehållsförteckning -->
+<div class="toc">
+    <h2>Innehållsförteckning</h2>
+    <ul>
+        <li class="level-1"><a href="#intro">1. Introduktion</a></li>
+        <li class="level-1"><a href="#start">2. Komma igång</a></li>
+        <li class="level-2"><a href="#login">2.1 Logga in</a></li>
+        <li class="level-2"><a href="#navigation">2.2 Navigering i systemet</a></li>
+        <li class="level-2"><a href="#logout">2.3 Logga ut</a></li>
+        <li class="level-1"><a href="#txt">3. TXT till Verifikat</a></li>
+        <li class="level-2"><a href="#txt-overview">3.1 Översikt</a></li>
+        <li class="level-2"><a href="#txt-format">3.2 Textformat</a></li>
+        <li class="level-2"><a href="#txt-steps">3.3 Skapa ett verifikat steg för steg</a></li>
+        <li class="level-2"><a href="#txt-preview">3.4 Förhandsgranska och validera</a></li>
+        <li class="level-2"><a href="#txt-book">3.5 Bokföra verifikatet</a></li>
+        <li class="level-1"><a href="#reversal">4. Automatisk Vändning</a></li>
+        <li class="level-2"><a href="#reversal-what">4.1 Vad är automatisk vändning?</a></li>
+        <li class="level-2"><a href="#reversal-enable">4.2 Aktivera funktionen</a></li>
+        <li class="level-2"><a href="#reversal-config">4.3 Konfigurera inställningar</a></li>
+        <li class="level-2"><a href="#reversal-date">4.4 Datumberäkning</a></li>
+        <li class="level-2"><a href="#reversal-monitor">4.5 Övervaka vändningar</a></li>
+        <li class="level-2"><a href="#reversal-history">4.6 Historik</a></li>
+        <li class="level-1"><a href="#troubleshoot">5. Felsökning</a></li>
+        <li class="level-1"><a href="#faq">6. Vanliga frågor (FAQ)</a></li>
+    </ul>
+</div>
+
+<!-- Kapitel 1: Introduktion -->
+<h2 id="intro">1. Introduktion</h2>
+
+<p>Burgsvik är ett integrationsverktyg som kopplar ihop textbaserad bokföringsdata med Fortnox. Systemet erbjuder två huvudfunktioner:</p>
+
+<ul>
+    <li><strong>TXT till Verifikat</strong> – Konvertera textfiler till verifikat i Fortnox</li>
+    <li><strong>Automatisk Vändning</strong> – Skapa automatiska vändningsverifikat baserat på regler du konfigurerar</li>
+</ul>
+
+<p>Systemet är tillgängligt via webbläsaren på <strong>burgsvik.fyrtech.se</strong>.</p>
+
+<!-- Kapitel 2: Komma igång -->
+<h2 id="start">2. Komma igång</h2>
+
+<h3 id="login">2.1 Logga in</h3>
+
+<ol>
+    <li>Öppna din webbläsare och gå till <strong>burgsvik.fyrtech.se</strong></li>
+    <li>Du möts av en inloggningssida</li>
+    <li>Klicka på <strong>"Logga in med Fortnox"</strong></li>
+    <li>Du omdirigeras till Fortnox inloggningssida</li>
+    <li>Logga in med dina Fortnox-uppgifter</li>
+    <li>Godkänn att Burgsvik får åtkomst till ditt Fortnox-konto</li>
+    <li>Du omdirigeras tillbaka till Burgsvik och är nu inloggad</li>
+</ol>
+
+<div class="tip">Du behöver ha ett aktivt Fortnox-konto och behörighet att skapa verifikat för att kunna använda systemet.</div>
+
+<h3 id="navigation">2.2 Navigering i systemet</h3>
+
+<p>När du är inloggad ser du ett sidofält (meny) till vänster med följande alternativ:</p>
+
+<table>
+    <tr>
+        <th>Menyval</th>
+        <th>Beskrivning</th>
+    </tr>
+    <tr>
+        <td><strong>TXT till Verifikat</strong></td>
+        <td>Skapa verifikat från textdata</td>
+    </tr>
+    <tr>
+        <td><strong>Automatisk vändning</strong></td>
+        <td>Konfigurera automatiska vändningsverifikat</td>
+    </tr>
+</table>
+
+<p>I sidofältet visas även information om ditt företag och ditt användarnamn.</p>
+
+<h3 id="logout">2.3 Logga ut</h3>
+
+<p>För att logga ut:</p>
+
+<ol>
+    <li>Klicka på <strong>"Logga ut"</strong>-knappen i sidofältet</li>
+    <li>Du loggas ut och omdirigeras till inloggningssidan</li>
+</ol>
+
+<!-- Kapitel 3: TXT till Verifikat -->
+<h2 id="txt" class="page-break">3. TXT till Verifikat</h2>
+
+<h3 id="txt-overview">3.1 Översikt</h3>
+
+<p>Funktionen "TXT till Verifikat" låter dig snabbt skapa verifikat i Fortnox genom att klistra in textdata. Systemet tolkar automatiskt din text och skapar ett korrekt formaterat verifikat.</p>
+
+<h3 id="txt-format">3.2 Textformat</h3>
+
+<p>Systemet förstår text som är separerad med komma, semikolon eller tabb. Varje rad representerar en verifikatsrad med följande struktur:</p>
+
+<pre>[Kostnadsställe] [Kontonummer] [Belopp] [Datum] [Beskrivning]</pre>
+
+<p><strong>Regler för belopp:</strong></p>
+<ul>
+    <li><strong>Positivt belopp</strong> = Debet</li>
+    <li><strong>Negativt belopp</strong> = Kredit</li>
+</ul>
+
+<p><strong>Datumformat som stöds:</strong></p>
+<ul>
+    <li><code>YYYYMMDD</code> (t.ex. 20260115)</li>
+    <li><code>YYYY-MM-DD</code> (t.ex. 2026-01-15)</li>
+</ul>
+
+<p><strong>Exempel på textinput:</strong></p>
+
+<pre>100, 1910, 5000, 20260115, Inbetalning från kund
+100, 3010, -5000, 20260115, Försäljning tjänster</pre>
+
+<p>Detta skapar ett verifikat med:</p>
+<ul>
+    <li>Rad 1: Kostnadsställe 100, konto 1910, 5 000 kr i debet</li>
+    <li>Rad 2: Kostnadsställe 100, konto 3010, 5 000 kr i kredit</li>
+</ul>
+
+<h3 id="txt-steps">3.3 Skapa ett verifikat steg för steg</h3>
+
+<p><strong>1. Navigera till funktionen</strong></p>
+<ul>
+    <li>Klicka på <strong>"TXT till Verifikat"</strong> i menyn</li>
+</ul>
+
+<p><strong>2. Klistra in eller skriv din text</strong></p>
+<ul>
+    <li>I det stora textfältet skriver eller klistrar du in din bokföringsdata</li>
+    <li>Systemet börjar automatiskt tolka texten</li>
+</ul>
+
+<p><strong>3. Ange verifikatserie</strong></p>
+<ul>
+    <li>I fältet <strong>"Verifikatserie"</strong> anger du vilken serie verifikatet ska bokföras på</li>
+    <li>Exempel: "A", "B", "C" etc.</li>
+</ul>
+
+<p><strong>4. Ange transaktionsdatum</strong></p>
+<ul>
+    <li>I fältet <strong>"Transaktionsdatum"</strong> väljer du datum för verifikatet</li>
+    <li>Om datum finns i texten föreslås detta automatiskt</li>
+    <li>Annars används dagens datum som förval</li>
+</ul>
+
+<p><strong>5. Lägg till beskrivning</strong></p>
+<ul>
+    <li>I fältet <strong>"Beskrivning"</strong> skriver du en valfri beskrivning av verifikatet</li>
+    <li>Denna text visas i Fortnox som verifikatets beskrivning</li>
+</ul>
+
+<h3 id="txt-preview">3.4 Förhandsgranska och validera</h3>
+
+<p>Till höger på skärmen visas en <strong>förhandsgranskning</strong> av ditt verifikat i realtid. Tabellen visar:</p>
+
+<table>
+    <tr>
+        <th>Kolumn</th>
+        <th>Beskrivning</th>
+    </tr>
+    <tr>
+        <td>Kostnadsställe</td>
+        <td>Eventuellt kostnadsställe</td>
+    </tr>
+    <tr>
+        <td>Konto</td>
+        <td>Kontonummer</td>
+    </tr>
+    <tr>
+        <td>Debet</td>
+        <td>Debetbelopp (kr)</td>
+    </tr>
+    <tr>
+        <td>Kredit</td>
+        <td>Kreditbelopp (kr)</td>
+    </tr>
+    <tr>
+        <td>Beskrivning</td>
+        <td>Radbeskrivning</td>
+    </tr>
+</table>
+
+<p><strong>Saldokontroll:</strong></p>
+
+<p>Längst ned i förhandsgranskningen visas:</p>
+<ul>
+    <li><strong>Total debet</strong> – Summan av alla debetposter</li>
+    <li><strong>Total kredit</strong> – Summan av alla kreditposter</li>
+    <li><strong>Saldostatus:</strong>
+        <ul>
+            <li class="success">✓ <strong>Saldo OK</strong> (grön) – Verifikatet är i balans och kan bokföras</li>
+            <li class="error">✕ <strong>Ej i balans</strong> (röd) – Verifikatet går inte att bokföra</li>
+        </ul>
+    </li>
+</ul>
+
+<h3 id="txt-book">3.5 Bokföra verifikatet</h3>
+
+<ol>
+    <li>Kontrollera att förhandsgranskningen ser korrekt ut</li>
+    <li>Kontrollera att saldo visas som <strong>"Saldo OK"</strong></li>
+    <li>Klicka på knappen <strong>"Bokför verifikat"</strong></li>
+</ol>
+
+<p><strong>Efter bokföring:</strong></p>
+
+<ul>
+    <li>En dialogruta visas med resultatet</li>
+    <li>Vid <strong>lyckat resultat</strong>: Du ser verifikatserie och verifikatnummer (t.ex. "A-123")</li>
+    <li>Vid <strong>fel</strong>: Du ser ett felmeddelande som förklarar vad som gick fel</li>
+    <li>Klicka på <strong>"Stäng"</strong> för att stänga dialogrutan</li>
+</ul>
+
+<!-- Kapitel 4: Automatisk Vändning -->
+<h2 id="reversal" class="page-break">4. Automatisk Vändning</h2>
+
+<h3 id="reversal-what">4.1 Vad är automatisk vändning?</h3>
+
+<p>Automatisk vändning är en funktion som övervakar när nya verifikat skapas i Fortnox. När ett verifikat skapas i en specifik serie (utlösarserie), skapar systemet automatiskt ett vändningsverifikat i en annan serie (målserie).</p>
+
+<p><strong>Vändningsverifikatet:</strong></p>
+<ul>
+    <li>Har samma konteringar som originalverifikatet</li>
+    <li>Men med <strong>omvända belopp</strong> (debet blir kredit och vice versa)</li>
+    <li>Bokförs på ett datum du konfigurerar</li>
+</ul>
+
+<div class="note"><strong>Användningsområde:</strong> Detta är användbart för periodiseringar där du vill att en transaktion automatiskt ska vändas vid nästa period.</div>
+
+<h3 id="reversal-enable">4.2 Aktivera funktionen</h3>
+
+<ol>
+    <li>Klicka på <strong>"Automatisk vändning"</strong> i menyn</li>
+    <li>Leta upp reglaget/brytaren <strong>"Aktiv"</strong></li>
+    <li>Klicka på reglaget för att aktivera funktionen</li>
+    <li>Reglaget blir grönt när funktionen är aktiv</li>
+</ol>
+
+<div class="warning">Funktionen börjar inte övervaka förrän du har sparat dina inställningar.</div>
+
+<h3 id="reversal-config">4.3 Konfigurera inställningar</h3>
+
+<p>Följande inställningar behöver konfigureras:</p>
+
+<table>
+    <tr>
+        <th>Inställning</th>
+        <th>Beskrivning</th>
+        <th>Exempel</th>
+    </tr>
+    <tr>
+        <td><strong>Utlösarserie</strong></td>
+        <td>Vilken verifikatserie som ska utlösa en automatisk vändning</td>
+        <td>"R"</td>
+    </tr>
+    <tr>
+        <td><strong>Målserie</strong></td>
+        <td>Vilken verifikatserie vändningsverifikatet ska bokföras på</td>
+        <td>"Q"</td>
+    </tr>
+    <tr>
+        <td><strong>Datumläge</strong></td>
+        <td>Hur datum för vändningsverifikatet ska beräknas</td>
+        <td>Se avsnitt 4.4</td>
+    </tr>
+</table>
+
+<p><strong>Steg för att konfigurera:</strong></p>
+
+<ol>
+    <li>Ange önskad <strong>utlösarserie</strong> (t.ex. "R")</li>
+    <li>Ange önskad <strong>målserie</strong> (t.ex. "Q")</li>
+    <li>Välj <strong>datumläge</strong> (se nedan)</li>
+    <li>Klicka på <strong>"Spara"</strong></li>
+</ol>
+
+<h3 id="reversal-date">4.4 Datumberäkning</h3>
+
+<p>Du kan välja mellan två sätt att beräkna datum för vändningsverifikatet:</p>
+
+<p><strong>Alternativ 1: Första dagen nästa månad</strong></p>
+<ul>
+    <li>Vändningsverifikatet får datum = transaktionsdatum + 1 månad, men på den 1:a</li>
+    <li>Exempel: Original daterat 2026-01-15 → Vändning daterad 2026-02-01</li>
+</ul>
+
+<p><strong>Alternativ 2: Datum från kommentar</strong></p>
+<ul>
+    <li>Systemet läser av datum från originalverifikatets kommentarfält</li>
+    <li>Datumet måste vara i formatet YYYY-MM-DD</li>
+    <li>Exempel: Om kommentaren innehåller "Vändningsdatum: 2026-03-01" används det datumet</li>
+</ul>
+
+<h3 id="reversal-monitor">4.5 Övervaka vändningar</h3>
+
+<p>På sidan för automatisk vändning kan du se:</p>
+
+<p><strong>Anslutningsstatus:</strong></p>
+<ul>
+    <li>Visar om systemet är anslutet till Fortnox</li>
+    <li><strong>"Ansluten till Fortnox"</strong> = Systemet övervakar aktivt</li>
+    <li><strong>"Ej ansluten"</strong> = Övervakning är inaktiv</li>
+</ul>
+
+<p><strong>Senaste händelse:</strong></p>
+<ul>
+    <li>Visar tidpunkt för senast mottagna händelse från Fortnox</li>
+</ul>
+
+<h3 id="reversal-history">4.6 Historik</h3>
+
+<p>Under <strong>"Senaste vändningar"</strong> visas en historik över utförda vändningar:</p>
+
+<table>
+    <tr>
+        <th>Information</th>
+        <th>Beskrivning</th>
+    </tr>
+    <tr>
+        <td>Källa</td>
+        <td>Originalverifikatets serie och nummer</td>
+    </tr>
+    <tr>
+        <td>Mål</td>
+        <td>Vändningsverifikatets serie och nummer</td>
+    </tr>
+    <tr>
+        <td>Räkenskapsår</td>
+        <td>Vilket räkenskapsår vändningen gäller</td>
+    </tr>
+    <tr>
+        <td>Status</td>
+        <td>Lyckat (✓) eller Misslyckat (✕)</td>
+    </tr>
+</table>
+
+<p><strong>Statusar:</strong></p>
+<ul>
+    <li class="success">✓ <strong>Lyckad</strong> – Vändningsverifikatet skapades korrekt</li>
+    <li class="error">✕ <strong>Misslyckad</strong> – Något gick fel (felmeddelande visas)</li>
+</ul>
+
+<!-- Kapitel 5: Felsökning -->
+<h2 id="troubleshoot" class="page-break">5. Felsökning</h2>
+
+<h3>Problem: Kan inte logga in</h3>
+
+<p><strong>Möjliga orsaker:</strong></p>
+<ul>
+    <li>Felaktiga Fortnox-inloggningsuppgifter</li>
+    <li>Ditt företag är inte registrerat i Burgsvik</li>
+    <li>Cookies är blockerade i webbläsaren</li>
+</ul>
+
+<p><strong>Lösning:</strong></p>
+<ol>
+    <li>Kontrollera att du använder rätt Fortnox-uppgifter</li>
+    <li>Kontakta din administratör för att verifiera att ditt företag är registrerat</li>
+    <li>Tillåt cookies från burgsvik.fyrtech.se</li>
+</ol>
+
+<h3>Problem: Verifikatet går inte att bokföra</h3>
+
+<p><strong>Möjliga orsaker:</strong></p>
+<ul>
+    <li>Verifikatet är inte i balans (debet ≠ kredit)</li>
+    <li>Ogiltigt kontonummer</li>
+    <li>Verifikatserien finns inte i Fortnox</li>
+    <li>Datumet ligger utanför öppet räkenskapsår</li>
+</ul>
+
+<p><strong>Lösning:</strong></p>
+<ol>
+    <li>Kontrollera att saldo visas som "Saldo OK"</li>
+    <li>Verifiera att alla kontonummer finns i din kontoplan</li>
+    <li>Kontrollera att verifikatserien är korrekt</li>
+    <li>Se till att datumet ligger inom ett öppet räkenskapsår i Fortnox</li>
+</ol>
+
+<h3>Problem: Automatisk vändning fungerar inte</h3>
+
+<p><strong>Möjliga orsaker:</strong></p>
+<ul>
+    <li>Funktionen är inte aktiverad</li>
+    <li>Inställningarna är inte sparade</li>
+    <li>Anslutningen till Fortnox är bruten</li>
+    <li>Utlösarserien matchar inte det nya verifikatet</li>
+</ul>
+
+<p><strong>Lösning:</strong></p>
+<ol>
+    <li>Kontrollera att reglaget "Aktiv" är påslaget</li>
+    <li>Klicka på "Spara" för att säkerställa att inställningarna är sparade</li>
+    <li>Kontrollera anslutningsstatus på sidan</li>
+    <li>Verifiera att utlösarserien matchar exakt (versaler/gemener spelar roll)</li>
+</ol>
+
+<h3>Problem: Felmeddelande vid bokföring</h3>
+
+<p><strong>Vanliga felmeddelanden:</strong></p>
+
+<table>
+    <tr>
+        <th>Felmeddelande</th>
+        <th>Betydelse</th>
+        <th>Lösning</th>
+    </tr>
+    <tr>
+        <td><code>Invalid account</code></td>
+        <td>Kontot finns inte</td>
+        <td>Kontrollera kontonumret i Fortnox</td>
+    </tr>
+    <tr>
+        <td><code>Voucher series not found</code></td>
+        <td>Serien finns inte</td>
+        <td>Skapa serien i Fortnox först</td>
+    </tr>
+    <tr>
+        <td><code>Financial year is locked</code></td>
+        <td>Räkenskapsåret är låst</td>
+        <td>Välj ett datum i ett öppet år</td>
+    </tr>
+    <tr>
+        <td><code>Unauthorized</code></td>
+        <td>Sessionen har gått ut</td>
+        <td>Logga ut och in igen</td>
+    </tr>
+</table>
+
+<!-- Kapitel 6: FAQ -->
+<h2 id="faq" class="page-break">6. Vanliga frågor (FAQ)</h2>
+
+<p><strong>F: Kan jag ångra ett bokfört verifikat?</strong><br>
+S: Nej, när ett verifikat är bokfört i Fortnox måste du hantera eventuella korrigeringar direkt i Fortnox.</p>
+
+<p><strong>F: Fungerar systemet med alla Fortnox-versioner?</strong><br>
+S: Systemet kräver att du har en Fortnox-licens som inkluderar API-åtkomst och möjlighet att skapa verifikat.</p>
+
+<p><strong>F: Kan jag ha flera utlösarserier för automatisk vändning?</strong><br>
+S: För närvarande stöds endast en utlösarserie per företag.</p>
+
+<p><strong>F: Vad händer om Fortnox-anslutningen bryts?</strong><br>
+S: Systemet försöker automatiskt återansluta. Eventuella verifikat som skapas under avbrottet kan missas av den automatiska vändningen.</p>
+
+<p><strong>F: Sparas min textdata någonstans?</strong><br>
+S: Nej, texten du skriver in sparas inte. Den används endast för att skapa verifikatet och skickas sedan till Fortnox.</p>
+
+<p><strong>F: Hur länge är jag inloggad?</strong><br>
+S: Din session är aktiv så länge du använder systemet. Vid längre inaktivitet kan du behöva logga in igen.</p>
+
+<!-- Footer -->
+<div class="footer">
+    <p>Denna manual gäller för Burgsvik version som är i produktion januari 2026.</p>
+    <p>Vid frågor eller problem, kontakta din systemadministratör.</p>
+    <p style="text-align: center; margin-top: 30px;">© 2026 Fyrtech AB</p>
+</div>
+
+</body>
+</html>

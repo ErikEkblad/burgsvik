@@ -97,7 +97,7 @@ const createReversedVoucher = (originalVoucher, targetSeries, dateMode, original
         TransactionInformation: row.TransactionInformation,
     }));
     // Skapa beskrivning med originalverifikationens serie och nummer
-    const description = `Periodisering av ${originalSeries}${originalNumber}`;
+    const description = `Vändning av ${originalSeries}${originalNumber}`;
     // Om fallback användes, lägg till information om detta i Comments
     const comments = usedFallback
         ? `Inget datum hittades i kommentaren på verifikat ${originalSeries}${originalNumber} använder därför första datum i nästa månad.`
